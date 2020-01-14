@@ -7,16 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        .layout{
+
+        .layout {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            min-width: 300px;
         }
-        .layout>.item{
+
+        .layout>.item {
             flex-basis: 33.33vw;
             text-align: center;
             height: 33.33vw;
@@ -24,19 +27,24 @@
             border: 1px solid #000;
             box-sizing: border-box;
         }
-        .layout>.item.active{
+
+        .layout>.item.active {
             background: #ddd;
+        }
+
+        .layout>.item.start {
+            background: rgba(255, 0, 0, 0.6);
         }
     </style>
 </head>
 
 <body>
     <div class="layout">
-        <div class="item">华为</div>
+        <div class="item">华为手机</div>
         <div class="item">iphonex</div>
         <div class="item">谢谢惠顾</div>
         <div class="item">小熊抱枕</div>
-        <div class="item active">开始</div>
+        <div class="item start">开始</div>
         <div class="item">小度音响</div>
         <div class="item">电风扇</div>
         <div class="item">格力冰箱</div>
@@ -44,7 +52,7 @@
     </div>
     <script>
         const data = [{
-            name: "华为"
+            name: "华为手机"
         }, {
             name: "iphonex"
         }, {
@@ -60,12 +68,59 @@
         }, {
             name: "手环"
         }]
-        class Item {
-            constructor(params) {
-                const div = document.createElement("div");
-                div.className = "item";
+
+        const items = document.querySelectorAll(".item:not(.start)");
+        console.log(items);
+        
+        const newItems = [];
+        newItems[0] = items[2];
+        newItems[1] = items[4];
+        newItems[2] = items[7];
+        newItems[3] = items[6];
+        newItems[4] = items[5];
+        newItems[5] = items[3];
+        newItems[6] = items[0];
+        newItems[7] = items[1];
+
+        function run(items) {
+            let times = 100,
+                num = Math.floor(Math.random() * 8),
+                interval = 500;
+                console.log(times);
+
+            function fn() {
+                times--;
+                items.forEach(element => {
+                    element.className = "item";
+                });
+                
+                items[times % 8].className = "item active";
+                if (times>40&&interval > 100) {
+                    interval -= 30;
+                }
+
+                if(times<10){
+                    interval += 30;
+                }
+                if(times <= num){
+                    clearTimeout(timer);
+                    setTimeout(()=>{
+                        const hoverItems = document.querySelector(".item.active");
+                        alert(`恭喜你获得${hoverItems.innerHTML}`)
+                    },1000)
+                    return
+                }
+                clearTimeout(timer);
+                timer = setTimeout(fn,interval)
             }
+
+            let timer = setTimeout(fn,interval);
         }
+
+        document.querySelector(".start").addEventListener("click",function(){
+            run(newItems)
+        });
+
     </script>
 </body>
 
