@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .layout{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .layout>.item{
+            flex-basis: 33.33vw;
+            text-align: center;
+            height: 33.33vw;
+            line-height: 33.33vw;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+        .layout>.item.active{
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="item">华为</div>
+        <div class="item">iphonex</div>
+        <div class="item">谢谢惠顾</div>
+        <div class="item">小熊抱枕</div>
+        <div class="item active">开始</div>
+        <div class="item">小度音响</div>
+        <div class="item">电风扇</div>
+        <div class="item">格力冰箱</div>
+        <div class="item">手环</div>
+    </div>
+    <script>
+        const data = [{
+            name: "华为"
+        }, {
+            name: "iphonex"
+        }, {
+            name: "谢谢惠顾"
+        }, {
+            name: "小熊抱枕"
+        }, {
+            name: "小度音响"
+        }, {
+            name: "电风扇"
+        }, {
+            name: "格力冰箱"
+        }, {
+            name: "手环"
+        }]
+        class Item {
+            constructor(params) {
+                const div = document.createElement("div");
+                div.className = "item";
+            }
+        }
+    </script>
+</body>
+
+</html>
