@@ -1,0 +1,23 @@
+.lottery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 300px;
+}
+
+.lottery>.lottery-item {
+    flex-basis: 33.33vw;
+    text-align: center;
+    height: 33.33vw;
+    line-height: 33.33vw;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+.lottery>.lottery-item.active {
+    background: #ddd;
+}
+
+.lottery>.lottery-item.lottery-start {
+    background: rgba(255, 0, 0, 0.6);
+}
